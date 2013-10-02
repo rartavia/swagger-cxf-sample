@@ -13,7 +13,6 @@
         </layout>
     </appender>
 
-
     <category name="org.apache">
         <priority value="INFO"/>
     </category>

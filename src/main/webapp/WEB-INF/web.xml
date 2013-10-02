@@ -4,23 +4,32 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
          http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-    <display-name>cxf</display-name>
+    <display-name>Swagger-CXF-Sample</display-name>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>WEB-INF/cxf-servlet.xml</param-value>
+    </context-param>
 
     <servlet>
-        <description>Apache CXF Endpoint</description>
-        <display-name>cxf</display-name>
-        <servlet-name>cxf</servlet-name>
+        <display-name>CXF Service Servlet</display-name>
+        <servlet-name>CXFServiceServlet</servlet-name>
         <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <filter>
+        <filter-name>ApiOriginFilter</filter-name>
+        <filter-class>com.seed.filter.ApiOriginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ApiOriginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <servlet-mapping>
-        <servlet-name>cxf</servlet-name>
+        <servlet-name>CXFServiceServlet</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
-
-    <session-config>
-        <session-timeout>60</session-timeout>
-    </session-config>
 
 </web-app>

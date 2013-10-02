@@ -1,5 +1,7 @@
 package com.seed.model;
 
+import com.wordnik.swagger.annotations.ApiModel;
+import com.wordnik.swagger.annotations.ApiModelProperty;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,16 +9,21 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlElement;
 
+@ApiModel(value = "A system user")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "user")
 public class User {
     @XmlElement
+    @ApiModelProperty(value = "User's ID", required = true)
     private Long id;
     @XmlElement
+    @ApiModelProperty(value = "User's email", required = true)
     private String email;
     @XmlElement
+    @ApiModelProperty(value = "User's first name", required = true)
     private String firstName;
     @XmlElement
+    @ApiModelProperty(value = "User's last name", required = true)
     private String lastName;
 
     @Override
